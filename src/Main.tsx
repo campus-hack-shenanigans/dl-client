@@ -78,10 +78,10 @@ export default class Main extends React.Component<{}, State> {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        poemCount,
-        temperature,
-        seedWord,
-        style,
+        poems_counts: poemCount,
+        temp: temperature,
+        word: seedWord,
+        style: style,
       }), 
     })
     .then(res => {
