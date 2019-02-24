@@ -132,6 +132,10 @@ export default class Main extends React.Component<{}, State> {
         return 'Shakespeare';
       case 2:
         return 'Eminem';
+      case 3:
+        return 'Kanye';
+      case 4:
+        return 'Kanye + Shakespeare';
     }
     return 'Select a style!';
   }
@@ -188,6 +192,16 @@ export default class Main extends React.Component<{}, State> {
               onClick={() => this.setState({ style: 2 })}
             >
               Eminem 
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => this.setState({ style: 3 })}
+            >
+              Kanye 
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => this.setState({ style: 4 })}
+            >
+              Kanye + Shakespeare 
             </Dropdown.Item>
           </DropdownButton>
         </Form.Group>
