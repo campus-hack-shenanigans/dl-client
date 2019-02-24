@@ -30,7 +30,7 @@ export default class Main extends React.Component<{}, State> {
       showLyrics: false,
       poems: [],
       seedWord: '',
-      temperature: 50,
+      temperature: 5,
       poemCount: 1,
       style: 0,
     };
@@ -88,7 +88,7 @@ export default class Main extends React.Component<{}, State> {
       console.log(res);
       return res;
     })
-    .then(jsonPoems => jsonPoems.json())
+    .then(rawData => rawData.json())
     .then(poems => {
       this.setState({
         poems,
@@ -116,8 +116,7 @@ export default class Main extends React.Component<{}, State> {
                   </div>
                 ))
               }
-              <br />
-              <br />
+            <br />
             </div>
           ))
         }
@@ -128,11 +127,11 @@ export default class Main extends React.Component<{}, State> {
   selectDropdownTitle(): string {
     switch(this.state.style) {
       case 0:
-        return 'Kanye';
+        return 'Haiku';
       case 1:
         return 'Shakespeare';
       case 2:
-        return 'Kanye + Shakespeare';
+        return 'Eminem';
     }
     return 'Select a style!';
   }
@@ -151,7 +150,7 @@ export default class Main extends React.Component<{}, State> {
         </Form.Group>
 
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>Poem count</Form.Label>
+          <Form.Label>Verse count</Form.Label>
           <Form.Control 
             type="text" 
             value={(this.state.poemCount || 0).toString()}
@@ -162,7 +161,7 @@ export default class Main extends React.Component<{}, State> {
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Randomness level</Form.Label>
           <InputRange
-            maxValue={100}
+            maxValue={10}
             minValue={0}
             step={1}
             value={this.state.temperature}
@@ -178,7 +177,7 @@ export default class Main extends React.Component<{}, State> {
             <Dropdown.Item
               onClick={() => this.setState({ style: 0 })}
             >
-              Kanye
+              Haiku 
             </Dropdown.Item>
             <Dropdown.Item
               onClick={() => this.setState({ style: 1 })}
@@ -188,7 +187,7 @@ export default class Main extends React.Component<{}, State> {
             <Dropdown.Item
               onClick={() => this.setState({ style: 2 })}
             >
-              Kanye + Shakespeare
+              Eminem 
             </Dropdown.Item>
           </DropdownButton>
         </Form.Group>
